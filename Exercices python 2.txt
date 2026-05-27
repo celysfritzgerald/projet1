@@ -1,0 +1,124 @@
+# ==================================================
+# ANALYSE DES NOTES DES ÉLÈVES
+# Bibliothèques :
+# NumPy, Pandas, Matplotlib
+# ==================================================
+
+# =========================
+# IMPORTATION
+# =========================
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+# =========================
+# DONNÉES
+# =========================
+
+eleves = [
+    "Jean",
+    "Marie",
+    "David",
+    "Sophia",
+    "Kevin",
+    "Laura",
+    "Daniel",
+    "Esther",
+    "Samuel",
+    "Ruth"
+]
+
+notes = [78, 85, 90, 67, 72, 95, 88, 60, 74, 81]
+
+
+# =========================
+# CRÉATION DU DATAFRAME
+# =========================
+
+df = pd.DataFrame({
+    "Élève": eleves,
+    "Note": notes
+})
+
+
+# =========================
+# AFFICHAGE DU DATASET
+# =========================
+
+print("========== DATASET ==========")
+print(df)
+
+
+# =========================
+# ANALYSE DES DONNÉES
+# =========================
+
+moyenne = np.mean(notes)
+maximum = np.max(notes)
+minimum = np.min(notes)
+somme = np.sum(notes)
+
+# Nombre d'élèves ayant réussi
+reussite = len(df[df["Note"] >= 70])
+
+# Nombre d'élèves ayant échoué
+echec = len(df[df["Note"] < 70])
+
+
+# =========================
+# AFFICHAGE DES RÉSULTATS
+# =========================
+
+print("\n========== ANALYSE ==========")
+
+print("Moyenne des notes :", moyenne)
+
+print("Note maximale :", maximum)
+
+print("Note minimale :", minimum)
+
+print("Somme totale des notes :", somme)
+
+print("Nombre d'élèves ayant réussi :", reussite)
+
+print("Nombre d'élèves ayant échoué :", echec)
+
+
+# =========================
+# CRÉATION DU GRAPHIQUE
+# =========================
+
+plt.figure(figsize=(10, 5))
+
+# Graphique en barres
+plt.bar(eleves, notes)
+
+# Ligne de moyenne
+plt.axhline(
+    y=moyenne,
+    linestyle="--",
+    label="Moyenne"
+)
+
+# Titre
+plt.title("Analyse des notes des élèves")
+
+# Nom axe X
+plt.xlabel("Élèves")
+
+# Nom axe Y
+plt.ylabel("Notes")
+
+# Afficher la légende
+plt.legend()
+
+# Rotation des noms
+plt.xticks(rotation=45)
+
+# Sauvegarde du graphique
+plt.savefig("notes.png")
+
+# Affichage du graphique
+plt.show()
