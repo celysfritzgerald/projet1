@@ -1,7 +1,7 @@
-fruits = ["mangue","banane","ananas"]
+fruits = ["boeuf","poulet","cabrit"]
 print(fruits)
 print(fruits[-2])
-fruits.append("abricot")
+fruits.append("canard")
 print(fruits)
-fruits.remove("mangue")
+fruits.remove("poulet")
 print(fruits)
